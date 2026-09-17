@@ -27,35 +27,13 @@
       "prefill": []
     },
     "fileName": {
-      "title": "Output File Name",
+      "title": "File Name",
       "type": "string",
-      "description": "Name for the output dataset file (without extension). Defaults to 'linkedin-companies' if left empty.",
+      "description": "Tag name for this run. Used to identify your output file. Example: my-target-companies-batch-1",
       "editor": "textfield",
-      "default": "linkedin-companies",
-      "prefill": "linkedin-companies"
-    },
-    "maxResults": {
-      "title": "Max Results",
-      "type": "integer",
-      "description": "Maximum number of companies to scrape. Set to 0 for unlimited.",
-      "editor": "number",
-      "default": 0,
-      "minimum": 0
-    },
-    "proxy": {
-      "title": "Proxy Configuration",
-      "type": "object",
-      "description": "Select proxies to be used by the actor. Residential proxies are recommended for better success rate.",
-      "editor": "proxy",
-      "default": {
-        "useApifyProxy": true,
-        "apifyProxyGroups": ["RESIDENTIAL"]
-      },
-      "prefill": {
-        "useApifyProxy": true,
-        "apifyProxyGroups": ["RESIDENTIAL"]
-      }
+      "default": "my-companies",
+      "prefill": "my-companies"
     }
   },
-  "required": []
+  "required": ["fileName"]
 }
