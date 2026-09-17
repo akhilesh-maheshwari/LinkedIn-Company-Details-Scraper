@@ -1,0 +1,55 @@
+{
+  "actorSpecification": 1,
+  "name": "linkedin-company-details-scraper-no-cookies",
+  "title": "LinkedIn Company Details Scraper (No Cookies)",
+  "description": "Scrape LinkedIn company details including name, industry, employee count, website, headquarters, founded year, and more. No LinkedIn cookies required.",
+  "version": "1.0.0",
+  "buildTag": "latest",
+  "environmentVariables": {},
+  "dockerfile": "./Dockerfile",
+  "readme": "./README.md",
+  "input": "./INPUT_SCHEMA.json",
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "fields": {},
+      "views": {
+        "overview": {
+          "title": "LinkedIn Companies",
+          "transformation": {
+            "fields": [
+              "companyName",
+              "linkedinUrl",
+              "website",
+              "industry",
+              "employeeCount",
+              "headquarters",
+              "foundedYear",
+              "description",
+              "specialties",
+              "companyType",
+              "followers",
+              "scrapedAt"
+            ]
+          },
+          "display": {
+            "component": "table",
+            "properties": {
+              "companyName": { "label": "Company Name", "format": "text" },
+              "linkedinUrl": { "label": "LinkedIn URL", "format": "link" },
+              "website": { "label": "Website", "format": "link" },
+              "industry": { "label": "Industry", "format": "text" },
+              "employeeCount": { "label": "Employees", "format": "number" },
+              "headquarters": { "label": "HQ", "format": "text" },
+              "foundedYear": { "label": "Founded", "format": "text" },
+              "description": { "label": "About", "format": "text" },
+              "companyType": { "label": "Type", "format": "text" },
+              "followers": { "label": "Followers", "format": "number" },
+              "scrapedAt": { "label": "Scraped At", "format": "datetime" }
+            }
+          }
+        }
+      }
+    }
+  }
+}
