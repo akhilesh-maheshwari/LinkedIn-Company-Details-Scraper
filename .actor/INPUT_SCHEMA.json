@@ -1,0 +1,61 @@
+{
+  "title": "LinkedIn Company Details Scraper (No Cookies)",
+  "description": "Scrape LinkedIn company details without requiring cookies. Provide company URLs directly or search by company name.",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "companyUrls": {
+      "title": "Company LinkedIn URLs",
+      "type": "array",
+      "description": "List of LinkedIn company page URLs to scrape. Example: https://www.linkedin.com/company/google",
+      "editor": "stringList",
+      "default": [
+        "https://www.linkedin.com/company/google",
+        "https://www.linkedin.com/company/microsoft"
+      ],
+      "prefill": [
+        "https://www.linkedin.com/company/google",
+        "https://www.linkedin.com/company/microsoft"
+      ]
+    },
+    "companyNames": {
+      "title": "Company Names (to search)",
+      "type": "array",
+      "description": "Search LinkedIn for companies by name. Note: LinkedIn search results can be inaccurate. Actor will scrape https://www.linkedin.com/search/results/companies/?keywords=example",
+      "editor": "stringList",
+      "default": [],
+      "prefill": []
+    },
+    "fileName": {
+      "title": "Output File Name",
+      "type": "string",
+      "description": "Name for the output dataset file (without extension). Defaults to 'linkedin-companies' if left empty.",
+      "editor": "textfield",
+      "default": "linkedin-companies",
+      "prefill": "linkedin-companies"
+    },
+    "maxResults": {
+      "title": "Max Results",
+      "type": "integer",
+      "description": "Maximum number of companies to scrape. Set to 0 for unlimited.",
+      "editor": "number",
+      "default": 0,
+      "minimum": 0
+    },
+    "proxy": {
+      "title": "Proxy Configuration",
+      "type": "object",
+      "description": "Select proxies to be used by the actor. Residential proxies are recommended for better success rate.",
+      "editor": "proxy",
+      "default": {
+        "useApifyProxy": true,
+        "apifyProxyGroups": ["RESIDENTIAL"]
+      },
+      "prefill": {
+        "useApifyProxy": true,
+        "apifyProxyGroups": ["RESIDENTIAL"]
+      }
+    }
+  },
+  "required": []
+}
