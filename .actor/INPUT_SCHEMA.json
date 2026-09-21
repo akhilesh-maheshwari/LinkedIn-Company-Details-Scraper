@@ -1,30 +1,22 @@
 {
   "title": "LinkedIn Company Details Scraper (No Cookies)",
-  "description": "Scrape LinkedIn company details without requiring cookies. Provide company URLs directly or search by company name.",
+  "description": "Scrape LinkedIn company details without requiring cookies. Provide company URLs or names — mix and match in the same list.",
   "type": "object",
   "schemaVersion": 1,
   "properties": {
-    "companyUrls": {
-      "title": "Company LinkedIn URLs",
+    "companies": {
+      "title": "Companies (URLs or Names)",
       "type": "array",
-      "description": "List of LinkedIn company page URLs to scrape. Example: https://www.linkedin.com/company/google",
+      "description": "Enter LinkedIn company URLs or company names — one per line. URLs like https://www.linkedin.com/company/google will be scraped directly. Plain names like 'Google' or 'Microsoft' will be searched on LinkedIn.",
       "editor": "stringList",
       "default": [
         "https://www.linkedin.com/company/google",
-        "https://www.linkedin.com/company/microsoft"
+        "Microsoft"
       ],
       "prefill": [
         "https://www.linkedin.com/company/google",
-        "https://www.linkedin.com/company/microsoft"
+        "Microsoft"
       ]
-    },
-    "companyNames": {
-      "title": "Company Names (to search)",
-      "type": "array",
-      "description": "Search LinkedIn for companies by name. Note: LinkedIn search results can be inaccurate. Actor will scrape https://www.linkedin.com/search/results/companies/?keywords=example",
-      "editor": "stringList",
-      "default": [],
-      "prefill": []
     },
     "fileName": {
       "title": "File Name",
