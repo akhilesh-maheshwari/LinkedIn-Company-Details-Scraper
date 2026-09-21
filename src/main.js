@@ -10,8 +10,21 @@ try {
   const input            = await Actor.getInput();
   const serviceTagName   = input.fileName    || '';
   const linkedinUrl      = '';
-  const rawUrls          = Array.isArray(input.companyUrls)   ? input.companyUrls   : [];
-  const rawNames         = Array.isArray(input.companyNames)  ? input.companyNames  : [];
+
+  // Merged input: split into URLs vs names
+  const rawCompanies = Array.isArray(input.companies) ? input.companies : [];
+
+  const rawUrls = rawCompanies.filter(entry =>
+    typeof entry === 'string' &&
+    (entry.trim().startsWith('https://www.linkedin.com/company/') ||
+     entry.trim().startsWith('http://www.linkedin.com/company/'))
+  );
+
+  const rawNames = rawCompanies.filter(entry =>
+    typeof entry === 'string' &&
+    !entry.trim().startsWith('https://') &&
+    !entry.trim().startsWith('http://')
+  );
 
   const serviceName       = 'LinkedIn Company Details';
   const serviceOption1    = 'linkedin-company-details';
@@ -25,7 +38,7 @@ try {
   console.log('Raw Names     :', rawNames.length);
 
   if (!serviceTagName.trim()) throw new Error('fileName is required!');
-  if (!rawUrls.length && !rawNames.length) throw new Error('At least one Company LinkedIn URL or Company Name is required!');
+  if (!rawUrls.length && !rawNames.length) throw new Error('At least one company LinkedIn URL or company name is required!');
 
   // ──────────────────────────────
   // 2. VALIDATE + CLEAN URLs
