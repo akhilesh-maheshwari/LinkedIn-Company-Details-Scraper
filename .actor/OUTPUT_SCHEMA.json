@@ -1,8 +1,8 @@
 {
-  "actorSpecification": 1,
+  "actorOutputSchemaVersion": 1,
   "fields": {
     "dataset": {
-      "title": "LinkedIn Companies",
+      "title": "Overview",
       "description": "Scraped LinkedIn company data including name, industry, employee count, website, headquarters, founded year, locations, logo, and more."
     }
   }
