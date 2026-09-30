@@ -1,9 +1,0 @@
-{
-  "actorOutputSchemaVersion": 1,
-  "fields": {
-    "dataset": {
-      "title": "Overview",
-      "description": "Scraped LinkedIn company data including name, industry, employee count, website, headquarters, founded year, locations, logo, and more."
-    }
-  }
-}
