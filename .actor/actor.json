@@ -15,7 +15,7 @@
       "fields": {},
       "views": {
         "overview": {
-          "title": "LinkedIn Companies",
+          "title": "Overview",
           "transformation": {
             "fields": [
               "input_url",
