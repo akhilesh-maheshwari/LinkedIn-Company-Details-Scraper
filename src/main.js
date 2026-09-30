@@ -29,8 +29,8 @@ try {
   const serviceName       = 'LinkedIn Company Data';
   const serviceOption1    = 'linkedin-company-details';
   const requestSource     = 'LinkedIn_Company_Details_AP';
-  const boomerangInputUrl = 'https://linkedinprivate-n8n.boomerangserver.co.in/webhook/company-details-request';
-  const boomerangStatUrl  = 'https://linkedinprivate-n8n.boomerangserver.co.in/webhook/company-details-stats';
+  const boomerangInputUrl = 'https://linkedincompanies.boomerangserver.co.in/webhook/lcapify-input';
+  const boomerangStatUrl  = 'https://linkedincompanies.boomerangserver.co.in/webhook/lcapify-stats';
 
   console.log('Tag Name      :', serviceTagName);
   console.log('Service       :', serviceName);
