@@ -3,16 +3,22 @@
   "name": "linkedin-company-details-scraper-no-cookies",
   "title": "LinkedIn Company Details Scraper (No Cookies)",
   "description": "Scrape LinkedIn company details including name, industry, employee count, website, headquarters, founded year, and more. No LinkedIn cookies required.",
-  "version": "1.0.0",
-  "buildTag": "latest",
-  "environmentVariables": {},
-  "dockerfile": "./Dockerfile",
-  "readme": "./README.md",
-  "input": "./INPUT_SCHEMA.json",
+  "version": "1.0",
+  "output": {
+    "actorOutputSchemaVersion": 1,
+    "title": "LinkedIn Company Details Output",
+    "description": "Scraped LinkedIn company data including name, industry, employee count, website, headquarters, founded year, locations, logo, and more.",
+    "properties": {
+      "results": {
+        "type": "string",
+        "title": "LinkedIn Companies",
+        "template": "{{links.apiDefaultDatasetUrl}}/items"
+      }
+    }
+  },
   "storages": {
     "dataset": {
       "actorSpecification": 1,
-      "fields": {},
       "views": {
         "overview": {
           "title": "Overview",
@@ -57,45 +63,7 @@
             ]
           },
           "display": {
-            "component": "table",
-            "properties": {
-              "input_url":             { "label": "Input URL",           "format": "link" },
-              "normalized_url":        { "label": "Normalized URL",      "format": "link" },
-              "correct_url":           { "label": "Correct URL",         "format": "link" },
-              "data_status":           { "label": "Data Status",         "format": "text" },
-              "url_status":            { "label": "URL Status",          "format": "text" },
-              "url_source":            { "label": "URL Source",          "format": "text" },
-              "company_id":            { "label": "Company ID",          "format": "text" },
-              "company_slug":          { "label": "Slug",                "format": "text" },
-              "name":                  { "label": "Company Name",        "format": "text" },
-              "slogan":                { "label": "Slogan",              "format": "text" },
-              "about":                 { "label": "About",               "format": "text" },
-              "specialties":           { "label": "Specialties",         "format": "text" },
-              "industries":            { "label": "Industry",            "format": "text" },
-              "organization_type":     { "label": "Organization Type",   "format": "text" },
-              "company_size":          { "label": "Company Size",        "format": "text" },
-              "type":                  { "label": "Type",                "format": "text" },
-              "sphere":                { "label": "Sphere",              "format": "text" },
-              "website":               { "label": "Website",             "format": "link" },
-              "website_simplified":    { "label": "Website (Short)",     "format": "text" },
-              "company_url":           { "label": "LinkedIn URL",        "format": "link" },
-              "crunchbase_url":        { "label": "Crunchbase URL",      "format": "link" },
-              "headquarters":          { "label": "Headquarters",        "format": "text" },
-              "country_code":          { "label": "Country",             "format": "text" },
-              "followers":             { "label": "Followers",           "format": "number" },
-              "employees_in_linkedin": { "label": "Employees",           "format": "number" },
-              "founded":               { "label": "Founded",             "format": "text" },
-              "locations":             { "label": "Locations (Raw)",     "format": "text" },
-              "formatted_locations":   { "label": "Locations",           "format": "text" },
-              "description":           { "label": "Description",         "format": "text" },
-              "logo":                  { "label": "Logo",                "format": "image" },
-              "image":                 { "label": "Cover Image",         "format": "image" },
-              "is_school":             { "label": "Is School",           "format": "text" },
-              "request_id":            { "label": "Request ID",          "format": "text" },
-              "child_request_id":      { "label": "Child Request ID",    "format": "text" },
-              "order_id":              { "label": "Order ID",            "format": "text" },
-              "processed_at":          { "label": "Processed At",        "format": "datetime" }
-            }
+            "component": "table"
           }
         }
       }
