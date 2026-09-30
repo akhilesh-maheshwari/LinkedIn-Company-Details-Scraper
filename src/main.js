@@ -16,8 +16,12 @@ try {
 
   const rawUrls = rawCompanies.filter(entry =>
     typeof entry === 'string' &&
-    (entry.trim().startsWith('https://www.linkedin.com/company/') ||
-     entry.trim().startsWith('http://www.linkedin.com/company/'))
+    (
+      entry.trim().startsWith('https://www.linkedin.com/company/') ||
+      entry.trim().startsWith('http://www.linkedin.com/company/')  ||
+      entry.trim().startsWith('https://linkedin.com/company/')     ||
+      entry.trim().startsWith('http://linkedin.com/company/')
+    )
   );
 
   const rawNames = rawCompanies.filter(entry =>
@@ -55,23 +59,24 @@ try {
       if (!u) return false;
       return (
         u.startsWith('https://www.linkedin.com/company/') ||
-        u.startsWith('http://www.linkedin.com/company/')
+        u.startsWith('http://www.linkedin.com/company/')  ||
+        u.startsWith('https://linkedin.com/company/')     ||
+        u.startsWith('http://linkedin.com/company/')
       );
     });
 
-  // Build search URLs from company names
-  const searchUrls = rawNames
+  // Clean raw names (no conversion to search URLs)
+  const cleanNames = rawNames
     .map(n => n?.trim())
-    .filter(Boolean)
-    .map(n => `https://www.linkedin.com/search/results/companies/?keywords=${encodeURIComponent(n)}`);
+    .filter(Boolean);
 
-  const allValidUrls = [...validUrls, ...searchUrls];
+  const allValidUrls = [...validUrls, ...cleanNames];
 
   console.log('Valid Company URLs    :', validUrls.length);
-  console.log('Search URLs (names)   :', searchUrls.length);
+  console.log('Raw Names             :', cleanNames.length);
   console.log('Total                 :', allValidUrls.length);
 
-  if (!allValidUrls.length) throw new Error('No valid LinkedIn company URLs found! URLs must start with https://www.linkedin.com/company/');
+  if (!allValidUrls.length) throw new Error('No valid input found! Provide LinkedIn company URLs or company names.');
 
   const rowCount   = allValidUrls.length;
   const csvContent = 'LinkedIn URL\n' + allValidUrls.join('\n');
