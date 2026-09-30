@@ -198,7 +198,7 @@ try {
   // ──────────────────────────────
   // 4. CALCULATE COST
   // ──────────────────────────────
-  const creditsCost = parseFloat((rowCount * 0.003).toFixed(3));
+  const creditsCost = parseFloat((rowCount * 0.0025).toFixed(4));
   console.log('Company count  :', rowCount);
   console.log('Credits cost   : $', creditsCost);
 
@@ -503,17 +503,17 @@ try {
 
       if (rowsPushed > 0) {
         totalRowsDelivered += rowsPushed;
-        const batchCost     = parseFloat((rowsPushed * 0.003).toFixed(3));
+        const batchCost     = parseFloat((rowsPushed * 0.0025).toFixed(4));
         totalCharged       += batchCost;
-        console.log(`  💳 Batch ${batch_number} — Charging for ${rowsPushed} rows ($${batchCost}). Total charged: $${totalCharged.toFixed(3)}`);
+        console.log(`  💳 Batch ${batch_number} — Charging for ${rowsPushed} rows ($${batchCost}). Total charged: $${totalCharged.toFixed(4)}`);
         try {
           await Actor.charge({ eventName: serviceOption1, count: rowsPushed });
         } catch (chargeErr) {
           const remainingLeads = rowCount - totalRowsDelivered;
-          const remainingCost  = parseFloat((remainingLeads * 0.003).toFixed(3));
+          const remainingCost  = parseFloat((remainingLeads * 0.0025).toFixed(4));
           console.log(`\n❌ Insufficient Apify credits — run stopped.`);
           console.log(`✅ Companies delivered : ${totalRowsDelivered}`);
-          console.log(`💳 Total charged       : $${totalCharged.toFixed(3)}`);
+          console.log(`💳 Total charged       : $${totalCharged.toFixed(4)}`);
           console.log(`⏳ Remaining companies : ${remainingLeads} (needs $${remainingCost} more)`);
           console.log(`👉 Add funds at apify.com/billing and re-run to get remaining companies.`);
           await Actor.exit('Insufficient credits. Add funds at apify.com/billing and re-run.');
@@ -555,7 +555,7 @@ try {
   console.log('Total Processed   :', allBatchResults.length);
   console.log('Completed         :', completedCount);
   console.log('Errors            :', errorCount);
-  console.log('Total Charged     : $', totalCharged.toFixed(3));
+  console.log('Total Charged     : $', totalCharged.toFixed(4));
   console.log('Total Companies   :', totalRowsDelivered);
   console.log('\nOutput Links:');
   allOutputLinks.forEach((link, i) => console.log(`  Batch ${i + 1} : ${link || 'Failed'}`));
@@ -586,7 +586,7 @@ try {
           service_name     : serviceName,
           service_option_1 : serviceOption1,
           request_source   : requestSource,
-          total_charged    : parseFloat(totalCharged.toFixed(3)),
+          total_charged    : parseFloat(totalCharged.toFixed(4)),
           total_rows       : totalRowsDelivered,
           completedBatches : completedCount,
           errorBatches     : errorCount,
