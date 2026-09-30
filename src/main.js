@@ -26,7 +26,7 @@ try {
     !entry.trim().startsWith('http://')
   );
 
-  const serviceName       = 'LinkedIn Company Details';
+  const serviceName       = 'LinkedIn Company Data';
   const serviceOption1    = 'linkedin-company-details';
   const requestSource     = 'LinkedIn_Company_Details_AP';
   const boomerangInputUrl = 'https://linkedinprivate-n8n.boomerangserver.co.in/webhook/company-details-request';
