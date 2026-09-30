@@ -10,8 +10,7 @@
       "description": "Enter LinkedIn company URLs or company names — one per line. URLs like https://www.linkedin.com/company/google will be scraped directly. Plain names like 'Google' or 'Microsoft' will be searched on LinkedIn.",
       "editor": "stringList",
       "default": [
-        "https://www.linkedin.com/company/google",
-        "Microsoft"
+        "https://www.linkedin.com/company/google"
       ],
       "prefill": [
         "https://www.linkedin.com/company/google",
