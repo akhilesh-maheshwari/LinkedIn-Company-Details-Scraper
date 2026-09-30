@@ -9,13 +9,14 @@
   "dockerfile": "./Dockerfile",
   "readme": "./README.md",
   "input": "./INPUT_SCHEMA.json",
+  "output": "./OUTPUT_SCHEMA.json",
   "storages": {
     "dataset": {
       "actorSpecification": 1,
       "fields": {},
       "views": {
         "overview": {
-          "title": "LinkedIn Companies",
+          "title": "Overview",
           "transformation": {
             "fields": [
               "input_url",
