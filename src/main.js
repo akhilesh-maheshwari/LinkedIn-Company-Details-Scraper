@@ -403,7 +403,7 @@ try {
                 request_id,
                 requestStatus     : 'Error',
                 driveInputLink,
-                boomerangOutputUrl: `https://linkedinprivate-n8n.boomerangserver.co.in/webhook/company-details-output?request_id=${request_id}`,
+                boomerangOutputUrl: `https://linkedincompanies.boomerangserver.co.in/webhook/lcapify-output?request_id=${request_id}`,
                 batch_number,
                 request_unique_id,
                 batchFolderId,
@@ -442,7 +442,7 @@ try {
         continue;
       }
 
-      const boomerangOutputUrl = `https://linkedinprivate-n8n.boomerangserver.co.in/webhook/company-details-output?request_id=${request_id}`;
+      const boomerangOutputUrl = `https://linkedincompanies.boomerangserver.co.in/webhook/lcapify-output?request_id=${request_id}`;
 
       let outputLink = '';
       try {
